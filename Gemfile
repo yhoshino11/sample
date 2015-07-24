@@ -6,7 +6,15 @@ gem 'uglifier'
 gem 'coffee-rails'
 gem 'jquery-rails'
 gem 'turbolinks'
-# gem 'unicorn'
-# gem 'capistrano-rails', group: :development
-group :development, :test do
+
+group :development do
+  gem 'capistrano'
+  gem 'capistrano-rails',   require: false
+  gem 'capistrano-bundler', require: false
+  gem 'capistrano-rbenv',   require: false
+  gem 'capistrano3-unicorn'
+end
+
+group :production do
+  gem 'unicorn'
 end
