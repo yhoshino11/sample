@@ -8,3 +8,10 @@ server '192.168.179.9', roles: %w(web app db),
                           keys: key_path,
                           auth_methods: %w(publickey)
                         }
+
+after 'deploy:publishing', 'deploy:restart'
+namespace :deploy do
+  task :restart do
+    invoke 'unicorn:restart'
+  end
+end
